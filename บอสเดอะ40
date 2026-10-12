@@ -1,0 +1,67 @@
+-- =====================================================
+-- 📱 ไอโฟน888❤️ Rainbow Edition (มีปุ่มเปิด/ปิด UI)
+-- =====================================================
+
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local LocalPlayer = Players.LocalPlayer
+local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
+
+-- ลบ UI เก่าหากมีค้างอยู่
+if PlayerGui:FindFirstChild("IPhone888ToggleUI") then
+    PlayerGui.IPhone888ToggleUI:Destroy()
+end
+
+-- 1. สร้าง ScreenGui หลัก
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "IPhone888ToggleUI"
+ScreenGui.Parent = PlayerGui
+ScreenGui.ResetOnSpawn = false
+
+--------------------------------------------------------
+-- 🔘 ปุ่มเปิด/ปิด เมนู (Toggle Toggle Button)
+--------------------------------------------------------
+local ToggleBtn = Instance.new("TextButton")
+ToggleBtn.Name = "ToggleButton"
+ToggleBtn.Parent = ScreenGui
+ToggleBtn.Position = UDim2.new(0, 15, 0.4, 0)
+ToggleBtn.Size = UDim2.new(0, 50, 0, 50)
+ToggleBtn.BackgroundColor3 = Color3.fromRGB(20, 20, 25)
+ToggleBtn.Font = Enum.Font.SourceSansBold
+ToggleBtn.Text = "📱"
+ToggleBtn.TextSize = 25
+ToggleBtn.Active = true
+ToggleBtn.Draggable = true -- ลากปุ่มไปวางมุมไหนของจอก็ได้
+
+local ToggleBtnCorner = Instance.new("UICorner", ToggleBtn)
+ToggleBtnCorner.CornerRadius = UDim.new(1, 0)
+
+local ToggleBtnStroke = Instance.new("UIStroke", ToggleBtn)
+ToggleBtnStroke.Thickness = 2.5
+
+--------------------------------------------------------
+-- 🖼️ กรอบเมนูหลัก (Main Frame)
+--------------------------------------------------------
+local MainFrame = Instance.new("Frame")
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = ScreenGui
+MainFrame.BackgroundColor3 = Color3.fromRGB(18, 18, 22)
+MainFrame.Position = UDim2.new(0.2, 0, 0.15, 0)
+MainFrame.Size = UDim2.new(0, 480, 0, 310)
+MainFrame.ClipsDescendants = true
+MainFrame.Active = true
+MainFrame.Draggable = true
+MainFrame.Visible = true -- เปิดเริ่มต้นไว้
+
+local UICorner = Instance.new("UICorner", MainFrame)
+UICorner.CornerRadius = UDim.new(0, 10)
+
+local RainbowStroke = Instance.new("UIStroke", MainFrame)
+RainbowStroke.Thickness = 2.5
+
+-- หัวข้อชื่อปก
+local Title = Instance.new("TextLabel")
+Title.Parent = MainFrame
+Title.BackgroundTransparency = 1
+Title.Position = UDim2.new(0, 15, 0, 8)
+Title.Size = UDim2.new(0, 200,
